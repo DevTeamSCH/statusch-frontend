@@ -1,0 +1,15 @@
+{
+  "extends": "airbnb",
+  "globals": {
+    "document": false
+  },
+  "rules": {
+    "react/jsx-filename-extension": 0,
+    "jsx-quotes": ["error", "prefer-single"],
+    "import/prefer-default-export": 0,
+    "react/prop-types": 1,
+    "react/prefer-stateless-function": 0,
+    "semi": 0,
+    "no-extra-semi": 1
+  }
+}
