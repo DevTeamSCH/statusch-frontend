@@ -1,11 +1,10 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { NavLink, Route } from 'react-router-dom'
-import { Menu, Image, Container as SemanticContainer } from 'semantic-ui-react'
+import { Link, NavLink, Route, Switch } from 'react-router-dom'
+import { Menu, Image, Container } from 'semantic-ui-react'
 
 import { getMosch } from '../actions'
-import { Container } from '../components'
-import { Mosch, Printer, StudyRoom } from '../components'
+import { Page, Mosch, Printer, StudyRoom, NotFound } from '../components'
 
 const menuStyle = {
   backgroundColor: '#fff',
@@ -18,22 +17,24 @@ class App extends Component {
     return (
       <div>
         <Menu fixed='top' style={menuStyle} borderless>
-          <SemanticContainer>
+          <Container>
             <Menu.Item>
-            <Image size='mini' src='/logo.png' />
+              <Image size='mini' src='/logo.png' />
             </Menu.Item>
-            <Menu.Item as='h2' header>Státusz SCH</Menu.Item>
+            <Menu.Item as={Link} to='/' header>Státusz SCH</Menu.Item>
             <Menu.Item as={NavLink} to='/laundry-rooms'>MosógépSCH</Menu.Item>
             <Menu.Item as={NavLink} to='/study-rooms'>TanulóSCH</Menu.Item>
             <Menu.Item as={NavLink} to='/printer'>PrinterSCH</Menu.Item>
-          </SemanticContainer>
+          </Container>
         </Menu>
-        <Container>
-          <Route path='/' />
-          <Route path='/laundry-rooms' component={Mosch} />
-          <Route path='/study-rooms' component={StudyRoom} />
-          <Route path='/printer' component={Printer} />
-        </Container>
+        <Page>
+          <Switch>
+            <Route path='/laundry-rooms' component={Mosch} />
+            <Route path='/study-rooms' component={StudyRoom} />
+            <Route path='/printer' component={Printer} />
+            <Route component={NotFound} />
+          </Switch>
+        </Page>
       </div>
     )
   }

@@ -1,4 +1,5 @@
-export { Container } from './Container'
+export { Page } from './Page'
 export { Mosch } from './Mosch'
 export { Printer } from './Printer'
 export { StudyRoom } from './StudyRoom'
+export { NotFound } from './NotFound'
