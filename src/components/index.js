@@ -1,5 +1,5 @@
 export { Page } from './Page'
-export { Mosch } from './Mosch'
+export { WashRoom } from './WashRoom'
 export { Printer } from './Printer'
 export { StudyRoom } from './StudyRoom'
 export { NotFound } from './NotFound'

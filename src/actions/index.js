@@ -1,1 +1,1 @@
-export * from './mosch'
+export * from './washroom'

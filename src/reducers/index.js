@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux'
-import mosch from './mosch'
+import washroom from './washroom'
 
 const rootReducer = combineReducers({
-  mosch,
+  washroom,
 })
 
 export default rootReducer
