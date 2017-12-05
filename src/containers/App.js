@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { NavLink, Route, Switch, Redirect } from 'react-router-dom'
+import { NavLink, Link, Route, Switch, Redirect } from 'react-router-dom'
 import { Menu, Image, Container } from 'semantic-ui-react'
 
-import { getWashRoom } from '../actions'
-import { Page, WashRoom, Printer, StudyRoom, NotFound } from '../components'
+import { getLaundry } from '../actions'
+import { Page, Laundry, Printer, Study, NotFound } from '../components'
 
 const menuStyle = {
   backgroundColor: '#fff',
@@ -13,6 +13,10 @@ const menuStyle = {
 }
 
 class App extends Component {
+  componentWillMount() {
+    this.props.getLaundry()
+  }
+
   render() {
     return (
       <div>
@@ -21,7 +25,7 @@ class App extends Component {
             <Menu.Item header>
               <Image size='mini' src='favicon.ico' />
             </Menu.Item>
-            <Menu.Item as={NavLink} to='/laundry-rooms'>MosógépSCH</Menu.Item>
+            <Menu.Item as={Link} to='/laundry-rooms'>MosógépSCH</Menu.Item>
             <Menu.Item as={NavLink} to='/study-rooms'>TanulóSCH</Menu.Item>
             <Menu.Item as={NavLink} to='/printer'>PrinterSCH</Menu.Item>
           </Container>
@@ -29,8 +33,8 @@ class App extends Component {
         <Page>
           <Switch>
             <Redirect exact from='/' to='/laundry-rooms' />
-            <Route path='/laundry-rooms' component={WashRoom} />
-            <Route path='/study-rooms' component={StudyRoom} />
+            <Route path='/laundry-rooms' component={Laundry} />
+            <Route path='/study-rooms' component={Study} />
             <Route path='/printer' component={Printer} />
             <Route component={NotFound} />
           </Switch>
@@ -40,11 +44,11 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = ({ washroom }) => ({ washroom })
+const mapStateToProps = ({ laundry }) => ({ laundry })
 
 const mapDispatchToProps = dispatch => ({
-  getWashRoom: () => {
-    dispatch(getWashRoom())
+  getLaundry: () => {
+    dispatch(getLaundry())
   },
 })
 

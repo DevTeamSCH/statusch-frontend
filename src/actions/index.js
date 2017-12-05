@@ -1,1 +1,1 @@
-export * from './washroom'
+export * from './laundry'

@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux'
-import washroom from './washroom'
+import laundry from './laundry'
 
 const rootReducer = combineReducers({
-  washroom,
+  laundry,
 })
 
 export default rootReducer
