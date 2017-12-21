@@ -1,5 +1,7 @@
 export { Page } from './Page'
-export { Laundry } from './Laundry'
+export { Floor } from './Floor'
 export { Printer } from './Printer'
 export { Study } from './Study'
 export { NotFound } from './NotFound'
+export { Machine } from './Machine'
+export { Circle } from './Circle'

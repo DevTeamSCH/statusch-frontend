@@ -4,7 +4,8 @@ import { NavLink, Link, Route, Switch, Redirect } from 'react-router-dom'
 import { Menu, Image, Container } from 'semantic-ui-react'
 
 import { getLaundry } from '../actions'
-import { Page, Laundry, Printer, Study, NotFound } from '../components'
+import { Page, Printer, Study, NotFound } from '../components'
+import LaundryContainer from './LaundryContainer'
 
 const menuStyle = {
   backgroundColor: '#fff',
@@ -33,7 +34,7 @@ class App extends Component {
         <Page>
           <Switch>
             <Redirect exact from='/' to='/laundry-rooms' />
-            <Route path='/laundry-rooms' component={Laundry} />
+            <Route path='/laundry-rooms' component={LaundryContainer} />
             <Route path='/study-rooms' component={Study} />
             <Route path='/printer' component={Printer} />
             <Route component={NotFound} />
@@ -44,12 +45,10 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = ({ laundry }) => ({ laundry })
-
 const mapDispatchToProps = dispatch => ({
   getLaundry: () => {
     dispatch(getLaundry())
   },
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(App)
+export default connect(null, mapDispatchToProps)(App)
