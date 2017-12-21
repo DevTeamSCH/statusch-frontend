@@ -6,7 +6,6 @@ import { Menu, Image, Container, Segment } from 'semantic-ui-react'
 import { getLaundry } from '../actions'
 import { Page, Printer, Study, NotFound } from '../components'
 import LaundryContainer from './LaundryContainer'
-import { NOTIFICATION_URL } from '../config'
 
 const menuStyle = {
   backgroundColor: '#fff',
@@ -22,11 +21,8 @@ const styles = {
 
 class App extends Component {
   componentWillMount() {
-    const server = new EventSource(NOTIFICATION_URL)
-    server.onmessage = (event) => {
-      console.log(event.data)
-    }
     this.props.getLaundry()
+    setInterval(() => this.props.getLaundry(), 120000)
   }
 
   render() {
