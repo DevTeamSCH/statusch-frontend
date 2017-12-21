@@ -13,12 +13,14 @@ class LaundryContainer extends Component {
         {
           floors.map((floor) => {
             const time = new Date(floor.last_query_time)
+            console.log(time)
             return (
               <Grid.Column mobile={16} tablet={8} computer={8} widescreen={4} key={floor.id}>
                 <Floor
                   floor={floor.id}
                   machines={floor.machines}
-                  queryTime={`${time.getHours()}:${time.getMinutes()}:${time.getSeconds()}`}
+                  queryTime={`${time.getHours()}:${time.getMinutes()}`}
+                  second={time.getSeconds()}
                   subscribe={subscribe}
                 />
               </Grid.Column>

@@ -3,7 +3,7 @@ import { Card, Feed } from 'semantic-ui-react'
 import { Machine } from '../components'
 
 const Floor = ({
-  floor, machines, queryTime, subscribe,
+  floor, machines, queryTime, subscribe, second,
 }) => (
   <Card fluid centered>
     <Card.Content textAlign='center'>
@@ -11,7 +11,7 @@ const Floor = ({
         {floor}. szint
       </Card.Header>
       <Card.Meta>
-        Utolsó lekérdezés: {queryTime}
+        Utolsó lekérdezés: {queryTime}<sub>{second}s</sub>
       </Card.Meta>
     </Card.Content>
     <Card.Content>

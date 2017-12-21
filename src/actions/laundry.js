@@ -7,7 +7,7 @@ export const getLaundry = () => async (dispatch) => {
   dispatch({ type: GET_LAUNDRY_FLOORS, payload: floors })
 }
 
-export const subscribe = (floor, machine) => async (dispatch) => {
-  console.log('szint', floor)
-  console.log('eszköz', machine)
+export const subscribe = (floor, machine) => () => {
+  console.log(floor, machine)
+  alert('Ez a funkció még nem elérhető')
 }
