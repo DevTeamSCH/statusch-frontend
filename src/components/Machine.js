@@ -29,7 +29,7 @@ const Machine = ({
       <Feed.Meta>
         <Feed.Like onClick={subscribe}>
           <Icon name='add' />
-          Felíratkozás
+          Feliratkozás
         </Feed.Like>
       </Feed.Meta>
     </Feed.Content>
