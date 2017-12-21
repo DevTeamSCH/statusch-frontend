@@ -2,9 +2,11 @@ import React from 'react'
 import { Card, Feed } from 'semantic-ui-react'
 import { Machine } from '../components'
 
-const Floor = ({ floor, machines, queryTime }) => (
-  <Card fluid>
-    <Card.Content>
+const Floor = ({
+  floor, machines, queryTime, subscribe,
+}) => (
+  <Card fluid centered>
+    <Card.Content textAlign='center'>
       <Card.Header>
         {floor}. szint
       </Card.Header>
@@ -13,7 +15,7 @@ const Floor = ({ floor, machines, queryTime }) => (
       </Card.Meta>
     </Card.Content>
     <Card.Content>
-      <Feed>
+      <Feed size='large'>
         {
           machines.map(machine => (
             <Machine
@@ -21,6 +23,7 @@ const Floor = ({ floor, machines, queryTime }) => (
               kind={machine.kind_of}
               status={machine.status}
               message={machine.message}
+              subscribe={() => subscribe(floor, machine.id)}
             />
           ))
         }

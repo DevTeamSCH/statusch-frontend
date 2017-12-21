@@ -4,26 +4,30 @@ import { Circle } from '../components'
 
 const statusToColor = (status) => {
   switch (status) {
-    case 1:
-      return 'green'
     case 0:
+      return 'green'
+    case 1:
       return 'red'
     default:
-      return 'yellow'
+      return 'blue'
   }
 }
 
-const Machine = ({ kind, status, message }) => (
+const Machine = ({
+  kind, status, message, subscribe,
+}) => (
   <Feed.Event>
     <Feed.Label>
       <Circle diameter={20} color={statusToColor(status)} />
     </Feed.Label>
     <Feed.Content>
       <Feed.Summary>
-        {kind} - {message}
+        {kind === 'WM' ? 'Mosógép' : 'Szárító'} {
+          message && `- ${message}`
+        }
       </Feed.Summary>
       <Feed.Meta>
-        <Feed.Like>
+        <Feed.Like onClick={subscribe}>
           <Icon name='add' />
           Felíratkozás
         </Feed.Like>
