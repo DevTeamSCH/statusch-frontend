@@ -3,7 +3,7 @@ import { Card, Feed } from 'semantic-ui-react'
 import { Machine } from '../components'
 
 const Floor = ({ floor, machines, queryTime }) => (
-  <Card>
+  <Card fluid>
     <Card.Content>
       <Card.Header>
         {floor}. szint
