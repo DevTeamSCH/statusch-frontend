@@ -25,7 +25,7 @@ const Machine = ({ kind, status, message }) => (
       <Feed.Meta>
         <Feed.Like>
           <Icon name='add' />
-          Subscribe
+          Felíratkozás
         </Feed.Like>
       </Feed.Meta>
     </Feed.Content>

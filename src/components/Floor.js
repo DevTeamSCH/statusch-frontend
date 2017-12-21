@@ -9,7 +9,7 @@ const Floor = ({ floor, machines, queryTime }) => (
         {floor}. szint
       </Card.Header>
       <Card.Meta>
-        Last data: {queryTime}
+        Utolsó lekérdezés: {queryTime}
       </Card.Meta>
     </Card.Content>
     <Card.Content>

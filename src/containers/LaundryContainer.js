@@ -1,27 +1,28 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-
-import { Floor } from '../components'
+import { Grid } from 'semantic-ui-react'
+import { Floor} from '../components'
 
 class LaundryContainer extends Component {
   render() {
     const { floors } = this.props.laundry
     return (
-      <div>
-        {
-          floors.map((floor) => {
-            const time = new Date(floor.last_query_time)
-            return (
-              <Floor
-                key={floor.id}
-                floor={floor.id}
-                machines={floor.machines}
-                queryTime={`${time.getHours()}:${time.getMinutes()}`}
-              />
-            )
-          })
-        }
-      </div>
+        <Grid centered>
+          {
+            floors.map((floor) => {
+              const time = new Date(floor.last_query_time)
+              return (
+                <Grid.Column mobile={14} tablet={8} computer={4} key={floor.id}>
+                  <Floor
+                    floor={floor.id}
+                    machines={floor.machines}
+                    queryTime={`${time.getHours()}:${time.getMinutes()}`}
+                  />
+                </Grid.Column>
+              )
+            })
+          }
+        </Grid>
     )
   }
 }
