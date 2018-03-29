@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Columns from 'grommet/components/Columns'
 import Box from 'grommet/components/Box'
+import Spinning from 'grommet/components/icons/Spinning'
 import { Floor } from '../components'
 import { subscribe as subscribeAction } from '../actions'
 
@@ -13,7 +14,8 @@ class LaundryContainer extends Component {
 
     return (
       <div>
-        {floors.length === 0 ? 'loading' : (
+        {/* TODO: if no data is available *Columns* crashes  */}
+        {floors.length === 0 ? <Spinning size='xlarge' /> : (
           <Columns maxCount={2} size='medium' masonry responsive justify='center'>
             {
               floors.map((floor) => {

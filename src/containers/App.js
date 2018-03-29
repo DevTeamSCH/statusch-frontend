@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Route, Switch, Redirect } from 'react-router-dom'
+import { Route, Switch, Redirect, Link } from 'react-router-dom'
 
 import GrommetApp from 'grommet/components/App'
 import Paragraph from 'grommet/components/Paragraph'
@@ -65,7 +65,9 @@ class App extends Component {
         >
           <Box direction='row' flex='grow' responsive={false} align='center' pad={{ horizontal: 'medium' }}>
             <Box align='start' flex='grow'>
-              <GrommetIcon colorIndex='' size='large' />
+              <Link to='/' href='/'>
+                <GrommetIcon colorIndex='' size='large' />
+              </Link>
             </Box>
             <Box align='end' flex='grow'>
               <Menu
