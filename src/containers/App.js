@@ -95,7 +95,7 @@ class App extends Component {
         {
           showToast &&
           <Toast onClose={() => this.props.hideToast()} >
-            <Box direction='row' align='center' justify='around'>
+            <Box direction='row' align='center' justify='around' responsive={false}>
               <Status value='warning' />
               <Heading tag='h3' className='toast-text'>
                 A funkció jelenleg még nem használható! ({floor}-{machine})
