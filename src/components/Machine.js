@@ -10,11 +10,11 @@ import Button from 'grommet/components/Button'
 const statusToColor = (status) => {
   switch (status) {
     case 0:
-      return 'green'
+      return 'ok'
     case 1:
-      return 'red'
+      return 'critical'
     default:
-      return 'blue'
+      return 'unknown'
   }
 }
 
@@ -24,13 +24,14 @@ const Machine = ({
   <ListItem pad='small' separator='top' direction='column'>
     <Box responsive={false} align='start' justify='between' direction='row'>
       <Box responsive={false} direction='row' align='start'>
-        <Status value='critical' />
+        <Status value={statusToColor(status)} />
         <Heading tag='h3' strong className='list-item-h3'>
-          Szárító
+          {kind === 'WM' ? 'Mosógép' : 'Szárító'}
         </Heading>
       </Box>
       <Box responsive={false} align='end'>
         <Paragraph align='end' size='small'>
+          {message}
           valami szöveg
           valami szöveg
           valami szöveg
@@ -52,22 +53,3 @@ const Machine = ({
 )
 
 export { Machine }
-
-// <Feed.Event>
-//   <Feed.Label>
-//     <Circle diameter={20} color={statusToColor(status)} />
-//   </Feed.Label>
-//   <Feed.Content>
-//     <Feed.Summary>
-//       {kind === 'WM' ? 'Mosógép' : 'Szárító'} {
-//         message && `- ${message}`
-//       }
-//     </Feed.Summary>
-//     <Feed.Meta>
-//       <Feed.Like onClick={subscribe}>
-//         <Icon name='add' />
-//         Feliratkozás
-//       </Feed.Like>
-//     </Feed.Meta>
-//   </Feed.Content>
-// </Feed.Event>
