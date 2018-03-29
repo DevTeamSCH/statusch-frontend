@@ -6,6 +6,7 @@ import 'semantic-ui-css/semantic.min.css'
 import configureStore from './configureStore'
 import registerServiceWorker from './registerServiceWorker'
 import App from './containers/App'
+import '../node_modules/grommet-css'
 
 const store = configureStore()
 
