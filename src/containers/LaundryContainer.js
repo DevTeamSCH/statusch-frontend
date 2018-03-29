@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Grid } from 'semantic-ui-react'
-import { Floor } from '../components'
 import Columns from 'grommet/components/Columns'
 import Box from 'grommet/components/Box'
+import { Floor } from '../components'
 import { subscribe as subscribeAction } from '../actions'
+
+import './LaundryContainer.css'
 
 class LaundryContainer extends Component {
   render() {
@@ -12,8 +13,20 @@ class LaundryContainer extends Component {
 
     return (
       <Columns maxCount={2} size='medium' masonry responsive justify='center'>
-        <Box align='center' pad='medium' margin='small' colorIndex='light-2'>
-          Box 1
+        <Box align='center' pad='small' margin='small' colorIndex='light-1' className='floor-box'>
+          <Floor
+            floor={1}
+            machines={[{
+              id: 1,
+              kind_of: 1,
+              status: 0,
+              message: 'message'
+            }]}
+            hour={new Date().getHours().toString().padStart(2, '0')}
+            minute={new Date().getMinutes().toString().padStart(2, '0')}
+            second={new Date().getSeconds().toString().padStart(2, '0')}
+            subscribe={subscribe}
+          />
         </Box>
         <Box align='center' pad='medium' margin='small' colorIndex='light-2'>
           Box 1
@@ -46,24 +59,27 @@ class LaundryContainer extends Component {
           Box 1
         </Box>
       </Columns>
-      // <Grid>
+      // <Columns maxCount={2} size='medium' masonry responsive justify='center'>
       //   {
       //     floors.map((floor) => {
       //       const time = new Date(floor.last_query_time)
       //       return (
-      //         <Grid.Column mobile={16} tablet={8} computer={8} widescreen={4} key={floor.id}>
+      //         <Box align='center' pad='small' margin='small' colorIndex='light-1' className='floor-box' key={floor.id}>
       //           <Floor
       //             floor={floor.id}
       //             machines={floor.machines}
-      //             queryTime={`${time.getHours()}:${time.getMinutes()}`}
-      //             second={time.getSeconds()}
+      //             queryTime={time}
+      //             hour={time.getHours().toString().padStart(2, '0')}
+      //             minute={time.getMinutes().toString().padStart(2, '0')}
+      //             second={time.getSeconds().toString().padStart(2, '0')}
       //             subscribe={subscribe}
       //           />
-      //         </Grid.Column>
+      //         </Box>
       //       )
       //     })
       //   }
-      // </Grid>
+      //   <Box align='center' pad='medium' margin='small' colorIndex='light-2' />
+      // </Columns>
     )
   }
 }
