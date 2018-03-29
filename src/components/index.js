@@ -1,4 +1,3 @@
-export { Page } from './Page'
 export { Floor } from './Floor'
 export { Printer } from './Printer'
 export { Study } from './Study'

@@ -10,6 +10,7 @@ import Menu from 'grommet/components/Menu'
 import Anchor from 'grommet/components/Anchor'
 import GrommetIcon from 'grommet/components/icons/base/BrandGrommetOutline'
 import Footer from 'grommet/components/Footer'
+import Section from 'grommet/components/Section'
 
 import { getLaundry } from '../actions'
 import { Printer, Study, NotFound } from '../components'
@@ -76,7 +77,7 @@ class App extends Component {
             </Box>
           </Box>
         </Header>
-
+<Section align='center' full='true'>
         <Switch>
           <Redirect exact from='/' to='/laundry-rooms' />
           <Route path='/laundry-rooms' component={LaundryContainer} />
@@ -84,7 +85,7 @@ class App extends Component {
           <Route path='/printer' component={Printer} />
           <Route component={NotFound} />
         </Switch>
-
+</Section>
         <Footer
           colorIndex='grey-5-a'
           size='small'
