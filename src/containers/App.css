@@ -6,3 +6,7 @@
   position: absolute;
   bottom: 0px;
 }
+
+.toast-text {
+  margin-left: 10px;
+}

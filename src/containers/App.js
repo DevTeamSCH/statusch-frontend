@@ -7,13 +7,17 @@ import Paragraph from 'grommet/components/Paragraph'
 import Box from 'grommet/components/Box'
 import Header from 'grommet/components/Header'
 import Menu from 'grommet/components/Menu'
+import Toast from 'grommet/components/Toast'
 import Anchor from 'grommet/components/Anchor'
 import GrommetIcon from 'grommet/components/icons/base/BrandGrommetOutline'
 import Footer from 'grommet/components/Footer'
+import Heading from 'grommet/components/Heading'
+import Status from 'grommet/components/icons/Status'
 
-import { getLaundry } from '../actions'
+import { getLaundry, hideToast } from '../actions'
 import { Printer, Study, NotFound } from '../components'
 import LaundryContainer from './LaundryContainer'
+
 
 import './App.css'
 
@@ -48,6 +52,7 @@ class App extends Component {
   }
 
   render() {
+    const { showToast, toastData: { floor, machine } } = this.props
     return (
       <GrommetApp centered={false}>
         <Header
@@ -85,6 +90,18 @@ class App extends Component {
           <Route component={NotFound} />
         </Switch>
 
+        {
+          showToast &&
+          <Toast onClose={() => this.props.hideToast()} >
+            <Box direction='row' align='center' justify='around'>
+              <Status value='warning' />
+              <Heading tag='h3' className='toast-text'>
+                A funkció jelenleg még nem használható! ({floor}-{machine})
+              </Heading>
+            </Box>
+          </Toast>
+        }
+
         <Footer
           colorIndex='grey-5-a'
           size='small'
@@ -103,10 +120,18 @@ class App extends Component {
   }
 }
 
+const mapStateToProps = ({ laundry: { showToast, toastData } }) => ({
+  showToast,
+  toastData,
+})
+
 const mapDispatchToProps = dispatch => ({
   getLaundry: () => {
     dispatch(getLaundry())
   },
+  hideToast: () => {
+    dispatch(hideToast())
+  },
 })
 
-export default connect(null, mapDispatchToProps)(App)
+export default connect(mapStateToProps, mapDispatchToProps)(App)

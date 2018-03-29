@@ -2,7 +2,7 @@ import React from 'react'
 import ListItem from 'grommet/components/ListItem'
 import Heading from 'grommet/components/Heading'
 import Paragraph from 'grommet/components/Paragraph'
-import AddIcon from 'grommet/components/icons/base/Add';
+import AddIcon from 'grommet/components/icons/base/Add'
 import Status from 'grommet/components/icons/Status'
 import Box from 'grommet/components/Box'
 import Button from 'grommet/components/Button'
@@ -22,14 +22,14 @@ const Machine = ({
   kind, status, message, subscribe,
 }) => (
   <ListItem pad='small' separator='top' direction='column'>
-    <Box align='start' justify='between' direction='row'>
-      <Box direction='row' align='start'>
+    <Box responsive={false} align='start' justify='between' direction='row'>
+      <Box responsive={false} direction='row' align='start'>
         <Status value='critical' />
         <Heading tag='h3' strong className='list-item-h3'>
           Szárító
         </Heading>
       </Box>
-      <Box align='end'>
+      <Box responsive={false} align='end'>
         <Paragraph align='end' size='small'>
           valami szöveg
           valami szöveg
@@ -38,14 +38,13 @@ const Machine = ({
         </Paragraph>
       </Box>
     </Box>
-    <Box>
+    <Box responsive={false}>
       <Button
         icon={<AddIcon />}
         label='Feliratkozás'
         onClick={subscribe}
         primary={false}
         plain
-        colorIndex='plain'
         size='small'
       />
     </Box>
@@ -53,8 +52,6 @@ const Machine = ({
 )
 
 export { Machine }
-
-
 
 // <Feed.Event>
 //   <Feed.Label>

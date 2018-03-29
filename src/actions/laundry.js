@@ -1,5 +1,7 @@
 import {
   GET_LAUNDRY_FLOORS,
+  SHOW_TOAST,
+  HIDE_TOAST,
 } from './types'
 
 export const getLaundry = () => async (dispatch) => {
@@ -7,7 +9,10 @@ export const getLaundry = () => async (dispatch) => {
   dispatch({ type: GET_LAUNDRY_FLOORS, payload: floors })
 }
 
-export const subscribe = (floor, machine) => () => {
-  console.log(floor, machine)
-  alert('Ez a funkció még nem elérhető')
+export const subscribe = (floor, machine) => async (dispatch) => {
+  dispatch({ type: SHOW_TOAST, payload: { floor, machine } })
+}
+
+export const hideToast = () => async (dispatch) => {
+  dispatch({ type: HIDE_TOAST })
 }

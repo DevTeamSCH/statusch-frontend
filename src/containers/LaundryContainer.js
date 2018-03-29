@@ -12,80 +12,37 @@ class LaundryContainer extends Component {
     const { laundry: { floors }, subscribe } = this.props
 
     return (
-      <Columns maxCount={2} size='medium' masonry responsive justify='center'>
-        <Box align='center' pad='small' margin='small' colorIndex='light-1' className='floor-box'>
-          <Floor
-            floor={1}
-            machines={[{
-              id: 1,
-              kind_of: 'WM',
-              status: 0,
-              message: 'message'
-            },
+      <div>
+        {floors.length === 0 ? 'loading' : (
+          <Columns maxCount={2} size='medium' masonry responsive justify='center'>
             {
-              id: 1,
-              kind_of: 'MK',
-              status: 1,
-              message: 'szöveg'
-            }]}
-            hour={new Date().getHours().toString().padStart(2, '0')}
-            minute={new Date().getMinutes().toString().padStart(2, '0')}
-            second={new Date().getSeconds().toString().padStart(2, '0')}
-            subscribe={subscribe}
-          />
-        </Box>
-        <Box align='center' pad='medium' margin='small' colorIndex='light-2'>
-          Box 1
-        </Box>
-        <Box align='center' pad='medium' margin='small' colorIndex='light-2'>
-          Box 1
-        </Box>
-        <Box align='center' pad='medium' margin='small' colorIndex='light-2'>
-          Box 1
-        </Box>
-        <Box align='center' pad='medium' margin='small' colorIndex='light-2'>
-          Box 1
-        </Box>
-        <Box align='center' pad='medium' margin='small' colorIndex='light-2'>
-          Box 1
-        </Box>
-        <Box align='center' pad='medium' margin='small' colorIndex='light-2'>
-          Box 1
-        </Box>
-        <Box align='center' pad='medium' margin='small' colorIndex='light-2'>
-          Box 1
-        </Box>
-        <Box align='center' pad='medium' margin='small' colorIndex='light-2'>
-          Box 1
-        </Box>
-        <Box align='center' pad='medium' margin='small' colorIndex='light-2'>
-          Box 1
-        </Box>
-        <Box align='center' pad='medium' margin='small' colorIndex='light-2'>
-          Box 1
-        </Box>
-      </Columns>
-      // <Columns maxCount={2} size='medium' masonry responsive justify='center'>
-      //   {
-      //     floors.map((floor) => {
-      //       const time = new Date(floor.last_query_time)
-      //       return (
-      //         <Box align='center' pad='small' margin='small' colorIndex='light-1' className='floor-box' key={floor.id}>
-      //           <Floor
-      //             floor={floor.id}
-      //             machines={floor.machines}
-      //             queryTime={time}
-      //             hour={time.getHours().toString().padStart(2, '0')}
-      //             minute={time.getMinutes().toString().padStart(2, '0')}
-      //             second={time.getSeconds().toString().padStart(2, '0')}
-      //             subscribe={subscribe}
-      //           />
-      //         </Box>
-      //       )
-      //     })
-      //   }
-      //   <Box align='center' pad='medium' margin='small' colorIndex='light-2' />
-      // </Columns>
+              floors.map((floor) => {
+                const time = new Date(floor.last_query_time)
+                return (
+                  <Box
+                    align='center'
+                    pad='small'
+                    margin='small'
+                    colorIndex='light-1'
+                    className='floor-box'
+                    key={floor.id}
+                  >
+                    <Floor
+                      floor={floor.id}
+                      machines={floor.machines}
+                      queryTime={time}
+                      hour={time.getHours().toString().padStart(2, '0')}
+                      minute={time.getMinutes().toString().padStart(2, '0')}
+                      second={time.getSeconds().toString().padStart(2, '0')}
+                      subscribe={subscribe}
+                    />
+                  </Box>
+                )
+              })
+            }
+          </Columns>
+        )}
+      </div>
     )
   }
 }
