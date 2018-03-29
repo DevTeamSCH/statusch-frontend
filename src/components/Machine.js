@@ -1,6 +1,11 @@
 import React from 'react'
-import { Feed, Icon } from 'semantic-ui-react'
-import { Circle } from '../components'
+import ListItem from 'grommet/components/ListItem'
+import Heading from 'grommet/components/Heading'
+import Paragraph from 'grommet/components/Paragraph'
+import AddIcon from 'grommet/components/icons/base/Add';
+import Status from 'grommet/components/icons/Status'
+import Box from 'grommet/components/Box'
+import Button from 'grommet/components/Button'
 
 const statusToColor = (status) => {
   switch (status) {
@@ -16,24 +21,56 @@ const statusToColor = (status) => {
 const Machine = ({
   kind, status, message, subscribe,
 }) => (
-  <Feed.Event>
-    <Feed.Label>
-      <Circle diameter={20} color={statusToColor(status)} />
-    </Feed.Label>
-    <Feed.Content>
-      <Feed.Summary>
-        {kind === 'WM' ? 'Mosógép' : 'Szárító'} {
-          message && `- ${message}`
-        }
-      </Feed.Summary>
-      <Feed.Meta>
-        <Feed.Like onClick={subscribe}>
-          <Icon name='add' />
-          Feliratkozás
-        </Feed.Like>
-      </Feed.Meta>
-    </Feed.Content>
-  </Feed.Event>
+  <ListItem pad='small' separator='top' direction='column'>
+    <Box align='start' justify='between' direction='row'>
+      <Box direction='row' align='start'>
+        <Status value='critical' />
+        <Heading tag='h3' strong className='list-item-h3'>
+          Szárító
+        </Heading>
+      </Box>
+      <Box align='end'>
+        <Paragraph align='end' size='small'>
+          valami szöveg
+          valami szöveg
+          valami szöveg
+          valami szöveg
+        </Paragraph>
+      </Box>
+    </Box>
+    <Box>
+      <Button
+        icon={<AddIcon />}
+        label='Feliratkozás'
+        onClick={subscribe}
+        primary={false}
+        plain
+        colorIndex='plain'
+        size='small'
+      />
+    </Box>
+  </ListItem>
 )
 
 export { Machine }
+
+
+
+// <Feed.Event>
+//   <Feed.Label>
+//     <Circle diameter={20} color={statusToColor(status)} />
+//   </Feed.Label>
+//   <Feed.Content>
+//     <Feed.Summary>
+//       {kind === 'WM' ? 'Mosógép' : 'Szárító'} {
+//         message && `- ${message}`
+//       }
+//     </Feed.Summary>
+//     <Feed.Meta>
+//       <Feed.Like onClick={subscribe}>
+//         <Icon name='add' />
+//         Feliratkozás
+//       </Feed.Like>
+//     </Feed.Meta>
+//   </Feed.Content>
+// </Feed.Event>

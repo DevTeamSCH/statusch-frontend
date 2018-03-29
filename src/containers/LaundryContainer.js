@@ -18,9 +18,15 @@ class LaundryContainer extends Component {
             floor={1}
             machines={[{
               id: 1,
-              kind_of: 1,
+              kind_of: 'WM',
               status: 0,
               message: 'message'
+            },
+            {
+              id: 1,
+              kind_of: 'MK',
+              status: 1,
+              message: 'szöveg'
             }]}
             hour={new Date().getHours().toString().padStart(2, '0')}
             minute={new Date().getMinutes().toString().padStart(2, '0')}
