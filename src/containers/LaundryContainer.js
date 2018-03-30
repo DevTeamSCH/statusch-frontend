@@ -16,7 +16,7 @@ class LaundryContainer extends Component {
       <div>
         {/* TODO: if no data is available *Columns* crashes  */}
         {floors.length === 0 ? <Spinning size='xlarge' /> : (
-          <Columns maxCount={2} size='medium' masonry responsive justify='center'>
+          <Columns className='laundry-container' maxCount={2} size='medium' masonry responsive justify='center'>
             {
               floors.map((floor) => {
                 const time = new Date(floor.last_query_time)

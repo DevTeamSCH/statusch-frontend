@@ -3,7 +3,8 @@
 }
 
 .footer {
-  position: absolute;
+  position: -webkit-sticky;
+  position: sticky;
   bottom: 0px;
 }
 

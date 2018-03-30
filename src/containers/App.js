@@ -12,6 +12,7 @@ import Anchor from 'grommet/components/Anchor'
 import GrommetIcon from 'grommet/components/icons/base/BrandGrommetOutline'
 import Footer from 'grommet/components/Footer'
 import Heading from 'grommet/components/Heading'
+import Section from 'grommet/components/Section'
 import Status from 'grommet/components/icons/Status'
 
 import { getLaundry, hideToast } from '../actions'
@@ -84,13 +85,15 @@ class App extends Component {
           </Box>
         </Header>
 
-        <Switch>
-          <Redirect exact from='/' to='/laundry-rooms' />
-          <Route path='/laundry-rooms' component={LaundryContainer} />
-          <Route path='/study-rooms' component={Study} />
-          <Route path='/printer' component={Printer} />
-          <Route component={NotFound} />
-        </Switch>
+        <Section>
+          <Switch>
+            <Redirect exact from='/' to='/laundry-rooms' />
+            <Route path='/laundry-rooms' component={LaundryContainer} />
+            <Route path='/study-rooms' component={Study} />
+            <Route path='/printer' component={Printer} />
+            <Route component={NotFound} />
+          </Switch>
+        </Section>
 
         {
           showToast &&
