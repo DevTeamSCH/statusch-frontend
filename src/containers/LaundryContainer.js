@@ -14,36 +14,50 @@ class LaundryContainer extends Component {
 
     return (
       <div>
-        {/* TODO: if no data is available *Columns* crashes  */}
-        {floors.length === 0 ? <Spinning size='xlarge' /> : (
-          <Columns className='laundry-container' maxCount={2} size='medium' masonry responsive justify='center'>
-            {
-              floors.map((floor) => {
-                const time = new Date(floor.last_query_time)
-                return (
-                  <Box
-                    align='center'
-                    pad='small'
-                    margin='small'
-                    colorIndex='light-1'
-                    className='floor-box'
-                    key={floor.id}
-                  >
-                    <Floor
-                      floor={floor.id}
-                      machines={floor.machines}
-                      queryTime={time}
-                      hour={time.getHours().toString().padStart(2, '0')}
-                      minute={time.getMinutes().toString().padStart(2, '0')}
-                      second={time.getSeconds().toString().padStart(2, '0')}
-                      subscribe={subscribe}
-                    />
-                  </Box>
-                )
-              })
-            }
-          </Columns>
-        )}
+        {floors.length === 0 ?
+          (
+            <Box align='center'>
+              <Spinning size='xlarge' />
+            </Box>
+          )
+          :
+          (
+            <Columns
+              className='laundry-container'
+              maxCount={2}
+              size='medium'
+              masonry
+              responsive
+              justify='center'
+            >
+              {
+                floors.map((floor) => {
+                  const time = new Date(floor.last_query_time)
+                  return (
+                    <Box
+                      align='center'
+                      pad='small'
+                      margin='small'
+                      colorIndex='light-1'
+                      className='floor-box'
+                      key={floor.id}
+                    >
+                      <Floor
+                        floor={floor.id}
+                        machines={floor.machines}
+                        queryTime={time}
+                        hour={time.getHours().toString().padStart(2, '0')}
+                        minute={time.getMinutes().toString().padStart(2, '0')}
+                        second={time.getSeconds().toString().padStart(2, '0')}
+                        subscribe={subscribe}
+                      />
+                    </Box>
+                  )
+                })
+              }
+            </Columns>
+          )
+        }
       </div>
     )
   }
