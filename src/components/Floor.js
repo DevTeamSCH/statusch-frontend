@@ -25,7 +25,7 @@ const Floor = ({
   >
     <List selectable={false}>
       {
-        machines.sort((a, b) => a.id - b.id).map(machine => (
+        machines.sort(a => a.kind_of === 'DR').map(machine => (
           <Machine
             key={machine.id}
             kind={machine.kind_of}
