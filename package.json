@@ -4,6 +4,8 @@
   "private": true,
   "proxy": "http://localhost:8000",
   "dependencies": {
+    "grommet": "^1.10.1",
+    "grommet-css": "^1.6.0",
     "prop-types": "^15.6.0",
     "react": "^16.2.0",
     "react-dom": "^16.1.1",
@@ -12,9 +14,7 @@
     "react-scripts": "1.0.17",
     "redux": "^3.7.2",
     "redux-logger": "^3.0.6",
-    "redux-thunk": "^2.2.0",
-    "semantic-ui-css": "^2.2.12",
-    "semantic-ui-react": "^0.77.0"
+    "redux-thunk": "^2.2.0"
   },
   "scripts": {
     "start": "react-scripts start",

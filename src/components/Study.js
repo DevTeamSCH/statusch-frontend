@@ -1,8 +1,10 @@
 import React from 'react'
-
+import Headline from 'grommet/components/Headline'
 
 const Study = () => (
-  <p>Study</p>
+  <Headline align='center'>
+    Coming Soon
+  </Headline>
 )
 
 export { Study }

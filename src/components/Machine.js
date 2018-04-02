@@ -1,39 +1,45 @@
 import React from 'react'
-import { Feed, Icon } from 'semantic-ui-react'
-import { Circle } from '../components'
+import ListItem from 'grommet/components/ListItem'
+import Heading from 'grommet/components/Heading'
+import AddIcon from 'grommet/components/icons/base/Add'
+import Status from 'grommet/components/icons/Status'
+import Box from 'grommet/components/Box'
+import Button from 'grommet/components/Button'
 
 const statusToColor = (status) => {
   switch (status) {
     case 0:
-      return 'green'
+      return 'ok'
     case 1:
-      return 'red'
+      return 'critical'
     default:
-      return 'blue'
+      return 'unknown'
   }
 }
 
 const Machine = ({
-  kind, status, message, subscribe,
+  kind, status, subscribe,
 }) => (
-  <Feed.Event>
-    <Feed.Label>
-      <Circle diameter={20} color={statusToColor(status)} />
-    </Feed.Label>
-    <Feed.Content>
-      <Feed.Summary>
-        {kind === 'WM' ? 'Mosógép' : 'Szárító'} {
-          message && `- ${message}`
-        }
-      </Feed.Summary>
-      <Feed.Meta>
-        <Feed.Like onClick={subscribe}>
-          <Icon name='add' />
-          Feliratkozás
-        </Feed.Like>
-      </Feed.Meta>
-    </Feed.Content>
-  </Feed.Event>
+  <ListItem pad='small' separator='top' direction='column'>
+    <Box responsive={false} direction='row' full='horizontal'>
+      <Box responsive={false} direction='row' align='center'>
+        <Status value={statusToColor(status)} />
+        <Heading tag='h3' className='list-item-h3' style={{ marginTop: 12 }}>
+          {kind === 'WM' ? 'Mosógép' : 'Szárító'}
+        </Heading>
+      </Box>
+      <Box responsive={false} align='end' flex='grow'>
+        <Button
+          icon={<AddIcon />}
+          onClick={subscribe}
+          primary={false}
+          plain
+          size='small'
+        />
+      </Box>
+    </Box>
+
+  </ListItem>
 )
 
 export { Machine }
