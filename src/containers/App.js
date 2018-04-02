@@ -53,7 +53,7 @@ class App extends Component {
   }
 
   render() {
-    const { showToast, toastData: { floor, machine } } = this.props
+    const { showToast, toastData: { floor, machine, status } } = this.props
     return (
       <GrommetApp centered={false}>
         <Header
@@ -99,7 +99,7 @@ class App extends Component {
           showToast &&
           <Toast onClose={() => this.props.hideToast()} >
             <Box direction='row' align='center' justify='around' responsive={false}>
-              <Status value='warning' />
+              <Status value={status} />
               <Heading tag='h3' className='toast-text'>
                 A funkció jelenleg még nem használható! ({floor}-{machine})
               </Heading>

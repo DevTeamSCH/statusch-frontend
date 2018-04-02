@@ -133,7 +133,7 @@ export const getLaundry = () => async (dispatch) => {
 }
 
 export const subscribe = (floor, machine) => async (dispatch) => {
-  dispatch({ type: SHOW_TOAST, payload: { floor, machine } })
+  dispatch({ type: SHOW_TOAST, payload: { floor, machine, status: 'warning' } })
 }
 
 export const hideToast = () => async (dispatch) => {
