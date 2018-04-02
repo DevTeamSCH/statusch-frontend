@@ -6,8 +6,10 @@
   position: -webkit-sticky;
   position: sticky;
   bottom: 0px;
+  height: 40px;
 }
 
 .toast-text {
   margin-left: 10px;
+  margin-top: 10px;
 }

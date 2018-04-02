@@ -1,7 +1,6 @@
 import React from 'react'
 import ListItem from 'grommet/components/ListItem'
 import Heading from 'grommet/components/Heading'
-import Paragraph from 'grommet/components/Paragraph'
 import AddIcon from 'grommet/components/icons/base/Add'
 import Status from 'grommet/components/icons/Status'
 import Box from 'grommet/components/Box'
@@ -19,36 +18,27 @@ const statusToColor = (status) => {
 }
 
 const Machine = ({
-  kind, status, message, subscribe,
+  kind, status, subscribe,
 }) => (
   <ListItem pad='small' separator='top' direction='column'>
-    <Box responsive={false} align='start' justify='between' direction='row'>
-      <Box responsive={false} direction='row' align='start'>
+    <Box responsive={false} direction='row' full='horizontal'>
+      <Box responsive={false} direction='row' align='center'>
         <Status value={statusToColor(status)} />
-        <Heading tag='h3' strong className='list-item-h3'>
+        <Heading tag='h3' className='list-item-h3' style={{ marginTop: 12 }}>
           {kind === 'WM' ? 'Mosógép' : 'Szárító'}
         </Heading>
       </Box>
-      <Box responsive={false} align='end'>
-        <Paragraph align='end' size='small'>
-          {message}
-          valami szöveg
-          valami szöveg
-          valami szöveg
-          valami szöveg
-        </Paragraph>
+      <Box responsive={false} align='end' flex='grow'>
+        <Button
+          icon={<AddIcon />}
+          onClick={subscribe}
+          primary={false}
+          plain
+          size='small'
+        />
       </Box>
     </Box>
-    <Box responsive={false}>
-      <Button
-        icon={<AddIcon />}
-        label='Feliratkozás'
-        onClick={subscribe}
-        primary={false}
-        plain
-        size='small'
-      />
-    </Box>
+
   </ListItem>
 )
 
