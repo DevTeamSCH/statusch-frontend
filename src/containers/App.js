@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 import { Route, Switch, Redirect, Link } from 'react-router-dom'
 
 import GrommetApp from 'grommet/components/App'
-import Paragraph from 'grommet/components/Paragraph'
 import Box from 'grommet/components/Box'
 import Header from 'grommet/components/Header'
 import Menu from 'grommet/components/Menu'
@@ -63,6 +62,7 @@ class App extends Component {
           pad='small'
           colorIndex='light-2'
           full='horizontal'
+          className='header-gr'
         >
           <Box direction='row' flex='grow' responsive={false} align='center' pad={{ horizontal: 'medium' }}>
             <Box align='start' flex='grow'>
@@ -109,15 +109,12 @@ class App extends Component {
 
         <Footer
           colorIndex='grey-5-a'
-          size='small'
           className='footer'
           pad={{ vertical: 'small' }}
           full='horizontal'
         >
           <Box align='center' flex='grow'>
-            <Paragraph>
               Created by DevTeam
-            </Paragraph>
           </Box>
         </Footer>
       </GrommetApp>

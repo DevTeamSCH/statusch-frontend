@@ -25,8 +25,8 @@ class LaundryContainer extends Component {
             <Columns
               className='laundry-container'
               maxCount={2}
-              size='medium'
               masonry
+              size='small'
               responsive
               justify='center'
             >
