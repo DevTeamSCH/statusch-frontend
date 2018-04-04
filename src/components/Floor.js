@@ -8,7 +8,7 @@ import { Machine } from '../components'
 import './Floor.css'
 
 const Floor = ({
-  floor, machines, hour, minute, second, subscribe,
+  floor, machines, hour, minute, second, subscribe, timeDiff,
 }) => (
   <Card
     label={
@@ -16,9 +16,16 @@ const Floor = ({
         <Heading tag='h3'>
           {floor}. szint
         </Heading>
-        <Label>
-          Utolsó lekérdezés - {hour}:{minute}<sub>{second}</sub>
-        </Label>
+        {
+          timeDiff >= 1 ?
+            <Label>
+              Utolsó lekérdezés - <small>Lost in space (&gt;1h)</small>
+            </Label>
+            :
+            <Label>
+              Utolsó lekérdezés - {hour}:{minute}<sub>{second}</sub>
+            </Label>
+        }
       </div>
     }
     contentPad='small'

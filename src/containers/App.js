@@ -8,7 +8,6 @@ import Header from 'grommet/components/Header'
 import Menu from 'grommet/components/Menu'
 import Toast from 'grommet/components/Toast'
 import Anchor from 'grommet/components/Anchor'
-import GrommetIcon from 'grommet/components/icons/base/BrandGrommetOutline'
 import Footer from 'grommet/components/Footer'
 import Heading from 'grommet/components/Heading'
 import Section from 'grommet/components/Section'
@@ -54,7 +53,7 @@ class App extends Component {
   render() {
     const { showToast, toastData: { floor, machine, status } } = this.props
     return (
-      <GrommetApp centered={false}>
+      <GrommetApp centered={false} lang='hu-HU'>
         <Header
           size='small'
           float={false}
@@ -67,7 +66,10 @@ class App extends Component {
           <Box direction='row' flex='grow' responsive={false} align='center' pad={{ horizontal: 'medium' }}>
             <Box align='start' flex='grow'>
               <Link to='/' href='/'>
-                <GrommetIcon colorIndex='' size='large' />
+                <picture>
+                  <source type='image/svg+xml' width='40' srcSet='status_icon.svg' />
+                  <img width='40' src='status_icon.png' alt='' />
+                </picture>
               </Link>
             </Box>
             <Box align='end' flex='grow'>

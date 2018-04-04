@@ -50,6 +50,7 @@ class LaundryContainer extends Component {
                         minute={time.getMinutes().toString().padStart(2, '0')}
                         second={time.getSeconds().toString().padStart(2, '0')}
                         subscribe={subscribe}
+                        timeDiff={Math.floor((new Date() - time) / 1000 / 60 / 60)}
                       />
                     </Box>
                   )
