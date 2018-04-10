@@ -6,7 +6,10 @@ import Status from 'grommet/components/icons/Status'
 import Box from 'grommet/components/Box'
 import Button from 'grommet/components/Button'
 
-const statusToColor = (status) => {
+const statusToColor = (status, lost) => {
+  if (lost) {
+    return 'unknown'
+  }
   switch (status) {
     case 0:
       return 'ok'
@@ -18,12 +21,12 @@ const statusToColor = (status) => {
 }
 
 const Machine = ({
-  kind, status, subscribe,
+  kind, status, subscribe, lost,
 }) => (
   <ListItem pad='small' separator='top' direction='column'>
     <Box responsive={false} direction='row' full='horizontal'>
       <Box responsive={false} direction='row' align='center'>
-        <Status value={statusToColor(status)} />
+        <Status value={statusToColor(status, lost)} />
         <Heading tag='h3' className='list-item-h3' style={{ marginTop: 12 }}>
           {kind === 'WM' ? 'Mosógép' : 'Szárító'}
         </Heading>
