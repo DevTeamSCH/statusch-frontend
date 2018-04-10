@@ -67,8 +67,8 @@ class LaundryContainer extends Component {
 const mapStateToProps = ({ laundry }) => ({ laundry })
 
 const mapDispatchToProps = dispatch => ({
-  subscribe: (floor, machine) => {
-    dispatch(subscribeAction(floor, machine))
+  subscribe: (machine) => {
+    dispatch(subscribeAction(machine))
   },
 })
 

@@ -2,12 +2,14 @@ import {
   GET_LAUNDRY_FLOORS,
   SHOW_TOAST,
   HIDE_TOAST,
+  MACHINE_SUBSCRIBE,
 } from '../actions/types'
 
 const initialState = {
   floors: [],
   showToast: false,
   toastData: {},
+  subscriptions: [],
 }
 
 export default (state = initialState, action) => {
@@ -18,6 +20,8 @@ export default (state = initialState, action) => {
       return { ...state, showToast: true, toastData: action.payload }
     case HIDE_TOAST:
       return { ...state, showToast: false, toastData: {} }
+    case MACHINE_SUBSCRIBE:
+      return { ...state, subscriptions: [...state.subscriptions, action.payload] }
     default:
       return state
   }

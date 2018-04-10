@@ -29,12 +29,11 @@ class App extends Component {
     this.onResize = this.onResize.bind(this)
   }
 
-  componentWillMount() {
-    this.props.getLaundry()
-    setInterval(() => this.props.getLaundry(), 120000)
-  }
-
   componentDidMount() {
+    // TODO: get subscribed items from localhost
+    this.props.getLaundry()
+    setInterval(() => this.props.getLaundry(), 5000)
+
     window.addEventListener('resize', this.onResize);
     this.onResize()
   }
@@ -51,7 +50,7 @@ class App extends Component {
   }
 
   render() {
-    const { showToast, toastData: { floor, machine, status } } = this.props
+    const { showToast, toastData: { text, status } } = this.props
     return (
       <GrommetApp centered={false} lang='hu-HU'>
         <Header
@@ -103,7 +102,7 @@ class App extends Component {
             <Box direction='row' align='center' justify='around' responsive={false}>
               <Status value={status} />
               <Heading tag='h3' className='toast-text'>
-                A funkció jelenleg még nem használható! ({floor}-{machine})
+                {text}
               </Heading>
             </Box>
           </Toast>

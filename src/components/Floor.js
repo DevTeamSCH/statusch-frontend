@@ -38,7 +38,7 @@ const Floor = ({
             kind={machine.kind_of}
             status={machine.status}
             message={machine.message}
-            subscribe={() => subscribe(floor, machine.id)}
+            subscribe={() => subscribe(machine.id)}
             lost={timeDiff >= 1}
           />
         ))
