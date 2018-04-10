@@ -39,6 +39,7 @@ const Floor = ({
             status={machine.status}
             message={machine.message}
             subscribe={() => subscribe(floor, machine.id)}
+            lost={timeDiff >= 1}
           />
         ))
       }
