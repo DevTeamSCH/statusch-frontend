@@ -23,8 +23,8 @@ const statusToColor = (status, lost) => {
 const Machine = ({
   kind, status, subscribe, lost,
 }) => (
-  <ListItem pad='small' separator='top' direction='column'>
-    <Box responsive={false} direction='row' full='horizontal'>
+  <ListItem pad='small' separator='top' direction='column' >
+    <Box responsive={false} direction='row' style={{ width: '100%' }}>
       <Box responsive={false} direction='row' align='center'>
         <Status value={statusToColor(status, lost)} />
         <Heading tag='h3' className='list-item-h3' style={{ marginTop: 12 }}>
