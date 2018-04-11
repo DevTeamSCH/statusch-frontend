@@ -44,11 +44,7 @@ export const subscribe = machine => async (dispatch) => {
       },
     })
   } else {
-    // TODO: wait for user interaction before continuing
     switch (Notification.permission) {
-      case 'default':
-        Notification.requestPermission()
-        break
       case 'denied':
         dispatch({
           type: SHOW_TOAST,
@@ -58,7 +54,7 @@ export const subscribe = machine => async (dispatch) => {
           },
         })
         break
-      default:
+      case 'granted':
         dispatch({ type: MACHINE_SUBSCRIBE, payload: machine })
         dispatch({
           type: SHOW_TOAST,
@@ -66,6 +62,28 @@ export const subscribe = machine => async (dispatch) => {
             text: 'Sikeres feliratkozás',
             status: 'ok',
           },
+        })
+        break
+      default:
+        Notification.requestPermission((result) => {
+          if (result === 'granted') {
+            dispatch({ type: MACHINE_SUBSCRIBE, payload: machine })
+            dispatch({
+              type: SHOW_TOAST,
+              payload: {
+                text: 'Sikeres feliratkozás',
+                status: 'ok',
+              },
+            })
+          } else if (result === 'denied') {
+            dispatch({
+              type: SHOW_TOAST,
+              payload: {
+                text: 'Értesítések nem engedélyezettek',
+                status: 'critical',
+              },
+            })
+          }
         })
         break
     }
