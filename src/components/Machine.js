@@ -2,6 +2,7 @@ import React from 'react'
 import ListItem from 'grommet/components/ListItem'
 import Heading from 'grommet/components/Heading'
 import AddIcon from 'grommet/components/icons/base/Add'
+import SubtractIcon from 'grommet/components/icons/base/Subtract'
 import Status from 'grommet/components/icons/Status'
 import Box from 'grommet/components/Box'
 import Button from 'grommet/components/Button'
@@ -21,7 +22,7 @@ const statusToColor = (status, lost) => {
 }
 
 const Machine = ({
-  kind, status, subscribe, lost,
+  id, kind, status, subscribe, lost, unsubscribe, subscriptions,
 }) => (
   <ListItem pad='small' separator='top' direction='column' >
     <Box responsive={false} direction='row' style={{ width: '100%' }}>
@@ -33,8 +34,8 @@ const Machine = ({
       </Box>
       <Box responsive={false} align='end' flex='grow'>
         <Button
-          icon={<AddIcon />}
-          onClick={subscribe}
+          icon={subscriptions.includes(id) ? <SubtractIcon /> : <AddIcon />}
+          onClick={subscriptions.includes(id) ? unsubscribe : subscribe}
           primary={false}
           plain
           size='small'

@@ -13,7 +13,7 @@ import Heading from 'grommet/components/Heading'
 import Section from 'grommet/components/Section'
 import Status from 'grommet/components/icons/Status'
 
-import { getLaundry, hideToast } from '../actions'
+import { getLaundry, hideToast, loadSave } from '../actions'
 import { Printer, Study, NotFound } from '../components'
 import LaundryContainer from './LaundryContainer'
 
@@ -29,12 +29,13 @@ class App extends Component {
     this.onResize = this.onResize.bind(this)
   }
 
-  componentWillMount() {
-    this.props.getLaundry()
-    setInterval(() => this.props.getLaundry(), 120000)
-  }
-
   componentDidMount() {
+    const subscriptions = JSON.parse(localStorage.getItem('mosogepschdatasave')) || []
+
+    this.props.loadSave(subscriptions)
+    this.props.getLaundry()
+    setInterval(() => this.props.getLaundry(), 1000 * 60)
+
     window.addEventListener('resize', this.onResize);
     this.onResize()
   }
@@ -51,7 +52,7 @@ class App extends Component {
   }
 
   render() {
-    const { showToast, toastData: { floor, machine, status } } = this.props
+    const { showToast, toastData: { text, status } } = this.props
     return (
       <GrommetApp centered={false} lang='hu-HU'>
         <Header
@@ -103,7 +104,7 @@ class App extends Component {
             <Box direction='row' align='center' justify='around' responsive={false}>
               <Status value={status} />
               <Heading tag='h3' className='toast-text'>
-                A funkció jelenleg még nem használható! ({floor}-{machine})
+                {text}
               </Heading>
             </Box>
           </Toast>
@@ -135,6 +136,9 @@ const mapDispatchToProps = dispatch => ({
   },
   hideToast: () => {
     dispatch(hideToast())
+  },
+  loadSave: (save) => {
+    dispatch(loadSave(save))
   },
 })
 

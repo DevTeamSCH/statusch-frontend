@@ -4,13 +4,13 @@ import Columns from 'grommet/components/Columns'
 import Box from 'grommet/components/Box'
 import Spinning from 'grommet/components/icons/Spinning'
 import { Floor } from '../components'
-import { subscribe as subscribeAction } from '../actions'
+import { subscribe as subscribeAction, unsubscribe as unsubscribeAction } from '../actions'
 
 import './LaundryContainer.css'
 
 class LaundryContainer extends Component {
   render() {
-    const { laundry: { floors }, subscribe } = this.props
+    const { laundry: { floors, subscriptions }, subscribe, unsubscribe } = this.props
 
     return (
       <div>
@@ -50,6 +50,8 @@ class LaundryContainer extends Component {
                         minute={time.getMinutes().toString().padStart(2, '0')}
                         second={time.getSeconds().toString().padStart(2, '0')}
                         subscribe={subscribe}
+                        unsubscribe={unsubscribe}
+                        subscriptions={subscriptions}
                         timeDiff={Math.floor((new Date() - time) / 1000 / 60 / 60)}
                       />
                     </Box>
@@ -67,8 +69,11 @@ class LaundryContainer extends Component {
 const mapStateToProps = ({ laundry }) => ({ laundry })
 
 const mapDispatchToProps = dispatch => ({
-  subscribe: (floor, machine) => {
-    dispatch(subscribeAction(floor, machine))
+  subscribe: (machine) => {
+    dispatch(subscribeAction(machine))
+  },
+  unsubscribe: (machine) => {
+    dispatch(unsubscribeAction(machine))
   },
 })
 
