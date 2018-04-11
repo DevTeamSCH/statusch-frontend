@@ -3,6 +3,7 @@ import {
   SHOW_TOAST,
   HIDE_TOAST,
   MACHINE_SUBSCRIBE,
+  LOAD_SAVE,
 } from '../actions/types'
 
 const initialState = {
@@ -21,7 +22,10 @@ export default (state = initialState, action) => {
     case HIDE_TOAST:
       return { ...state, showToast: false, toastData: {} }
     case MACHINE_SUBSCRIBE:
+      localStorage.setItem('mosogepschdatasave', JSON.stringify([...state.subscriptions, action.payload]))
       return { ...state, subscriptions: [...state.subscriptions, action.payload] }
+    case LOAD_SAVE:
+      return { ...state, subscriptions: action.payload }
     default:
       return state
   }

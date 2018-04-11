@@ -5,7 +5,8 @@
     "fetch": false,
     "EventSource": false,
     "window": false,
-    "Notification": false
+    "Notification": false,
+    "localStorage": false
   },
   "rules": {
     "react/jsx-filename-extension": 0,

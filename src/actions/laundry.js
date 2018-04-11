@@ -3,13 +3,14 @@ import {
   SHOW_TOAST,
   HIDE_TOAST,
   MACHINE_SUBSCRIBE,
+  LOAD_SAVE,
 } from './types'
 
 export const getLaundry = () => async (dispatch, getState) => {
   const floors = await fetch('/api/v1/laundry-room/').then(response => response.json())
   const { floors: oldFloors, subscriptions } = getState().laundry;
 
-  if ((subscriptions.length > 0) && (('Notification' in window) && (Notification.permission === 'granted'))) {
+  if ((subscriptions.length > 0 && oldFloors.length > 0) && (('Notification' in window) && (Notification.permission === 'granted'))) {
     const oldMachines = [].concat(...oldFloors.map(oldFloor => oldFloor.machines.map(oldMachine => oldMachine)))
 
     floors.forEach((floor) => {
@@ -18,12 +19,10 @@ export const getLaundry = () => async (dispatch, getState) => {
           const oldState = oldMachines.find(x => x.id === machine.id)
           if (oldState.state !== machine.state) {
             const kind = machine.kind === 'WM' ? 'mosógép' : 'szárító'
-            // TODO: backend should give new kind if data is too old or
-            // check should be implemented here
             // eslint-disable-next-line
             new Notification('MosógépSCH', {
               body: `Frissült egy feliratkozott ${kind} állapota`,
-              icon: 'status_icon.png',
+              icon: '/status_icon.png',
             })
           }
         }
@@ -92,4 +91,8 @@ export const subscribe = machine => async (dispatch) => {
 
 export const hideToast = () => async (dispatch) => {
   dispatch({ type: HIDE_TOAST })
+}
+
+export const loadSave = save => async (dispatch) => {
+  dispatch({ type: LOAD_SAVE, payload: save })
 }

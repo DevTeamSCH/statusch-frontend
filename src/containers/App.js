@@ -13,7 +13,7 @@ import Heading from 'grommet/components/Heading'
 import Section from 'grommet/components/Section'
 import Status from 'grommet/components/icons/Status'
 
-import { getLaundry, hideToast } from '../actions'
+import { getLaundry, hideToast, loadSave } from '../actions'
 import { Printer, Study, NotFound } from '../components'
 import LaundryContainer from './LaundryContainer'
 
@@ -30,7 +30,9 @@ class App extends Component {
   }
 
   componentDidMount() {
-    // TODO: get subscribed items from localhost
+    const subscriptions = JSON.parse(localStorage.getItem('mosogepschdatasave')) || []
+
+    this.props.loadSave(subscriptions)
     this.props.getLaundry()
     setInterval(() => this.props.getLaundry(), 5000)
 
@@ -134,6 +136,9 @@ const mapDispatchToProps = dispatch => ({
   },
   hideToast: () => {
     dispatch(hideToast())
+  },
+  loadSave: (save) => {
+    dispatch(loadSave(save))
   },
 })
 
