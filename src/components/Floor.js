@@ -8,7 +8,7 @@ import { Machine } from '../components'
 import './Floor.css'
 
 const Floor = ({
-  floor, machines, hour, minute, second, subscribe, timeDiff,
+  floor, machines, hour, minute, second, subscribe, timeDiff, unsubscribe, subscriptions,
 }) => (
   <Card
     label={
@@ -35,11 +35,14 @@ const Floor = ({
         machines.sort(a => a.kind_of === 'DR').map(machine => (
           <Machine
             key={machine.id}
+            id={machine.id}
             kind={machine.kind_of}
             status={machine.status}
             message={machine.message}
             subscribe={() => subscribe(machine.id)}
             lost={timeDiff >= 1}
+            unsubscribe={() => unsubscribe(machine.id)}
+            subscriptions={subscriptions}
           />
         ))
       }

@@ -3,6 +3,7 @@ import {
   SHOW_TOAST,
   HIDE_TOAST,
   MACHINE_SUBSCRIBE,
+  MACHINE_UNSUBSCRIBE,
   LOAD_SAVE,
 } from './types'
 
@@ -87,6 +88,18 @@ export const subscribe = machine => async (dispatch) => {
         break
     }
   }
+}
+
+export const unsubscribe = machine => async (dispatch, getState) => {
+  const { subscriptions } = getState().laundry
+  dispatch({ type: MACHINE_UNSUBSCRIBE, payload: (subscriptions.filter(i => i !== machine)) })
+  dispatch({
+    type: SHOW_TOAST,
+    payload: {
+      text: 'Sikeres leiratkozás',
+      status: 'ok',
+    },
+  })
 }
 
 export const hideToast = () => async (dispatch) => {
