@@ -18,7 +18,7 @@ export const getLaundry = () => async (dispatch, getState) => {
       floor.machines.forEach((machine) => {
         if (subscriptions.includes(machine.id)) {
           const oldState = oldMachines.find(x => x.id === machine.id)
-          if (oldState.state !== machine.state) {
+          if (oldState.status !== machine.status) {
             const kind = machine.kind === 'WM' ? 'mosógép' : 'szárító'
             // eslint-disable-next-line
             new Notification('MosógépSCH', {
