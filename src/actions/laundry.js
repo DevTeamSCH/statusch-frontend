@@ -19,7 +19,7 @@ export const getLaundry = () => async (dispatch, getState) => {
         if (subscriptions.includes(machine.id)) {
           const oldState = oldMachines.find(x => x.id === machine.id)
           if (oldState.status !== machine.status) {
-            const kind = machine.kind === 'WM' ? 'mosógép' : 'szárító'
+            const kind = machine.kind_of === 'WM' ? 'mosógép' : 'szárító'
             // eslint-disable-next-line
             new Notification('MosógépSCH', {
               body: `Frissült egy feliratkozott ${kind} állapota`,
