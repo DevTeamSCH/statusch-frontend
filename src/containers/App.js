@@ -12,6 +12,7 @@ import Footer from 'grommet/components/Footer'
 import Heading from 'grommet/components/Heading'
 import Section from 'grommet/components/Section'
 import Status from 'grommet/components/icons/Status'
+import SocialGithubIcon from 'grommet/components/icons/base/SocialGithub'
 
 import { getLaundry, hideToast, loadSave } from '../actions'
 import { Printer, Study, NotFound } from '../components'
@@ -116,8 +117,16 @@ class App extends Component {
           pad={{ vertical: 'small' }}
           full='horizontal'
         >
-          <Box align='center' flex='grow'>
-              Created by DevTeam
+          <Box direction='row' responsive={false} justify='center' flex='grow'>
+            Created by DevTeam
+            <Anchor
+              className='social-icon'
+              icon={<SocialGithubIcon />}
+              href='http://github.com/DevTeamSCH/statusch-frontend'
+              primary
+              target='_blank'
+              animateIcon={false}
+            />
           </Box>
         </Footer>
       </GrommetApp>
