@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Route, Switch, Redirect, Link } from 'react-router-dom'
+import { Route, Switch, Link } from 'react-router-dom'
 
 import GrommetApp from 'grommet/components/App'
 import Box from 'grommet/components/Box'
@@ -35,7 +35,7 @@ class App extends Component {
 
     this.props.loadSave(subscriptions)
     this.props.getLaundry()
-    setInterval(() => this.props.getLaundry(), 1000 * 60)
+    setInterval(() => this.props.getLaundry(), 1000 * 5)
 
     window.addEventListener('resize', this.onResize);
     this.onResize()
@@ -81,7 +81,7 @@ class App extends Component {
                 primary={false}
                 direction='row'
               >
-                <Anchor className='menu-anchor' path='laundry-rooms'>MosógépSCH</Anchor>
+                <Anchor className='menu-anchor' path='/'>MosógépSCH</Anchor>
                 <Anchor className='menu-anchor' path='/study-rooms'>TanulóSCH</Anchor>
                 <Anchor className='menu-anchor' path='/printer'>PrinterSCH</Anchor>
               </Menu>
@@ -91,11 +91,11 @@ class App extends Component {
 
         <Section>
           <Switch>
-            <Redirect exact from='/' to='/laundry-rooms' />
-            <Route path='/laundry-rooms' component={LaundryContainer} />
-            <Route path='/study-rooms' component={Study} />
-            <Route path='/printer' component={Printer} />
-            <Route component={NotFound} />
+            <Route exact path='/' component={LaundryContainer} />
+            <Route exact path='/study-rooms' component={Study} />
+            <Route exact path='/printer' component={Printer} />
+            {/* <Route component={NotFound} /> */}
+            <Route path='*' component={NotFound} />
           </Switch>
         </Section>
 
