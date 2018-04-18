@@ -35,7 +35,7 @@ class App extends Component {
 
     this.props.loadSave(subscriptions)
     this.props.getLaundry()
-    setInterval(() => this.props.getLaundry(), 1000 * 5)
+    setInterval(() => this.props.getLaundry(), 1000 * 60)
 
     window.addEventListener('resize', this.onResize);
     this.onResize()
