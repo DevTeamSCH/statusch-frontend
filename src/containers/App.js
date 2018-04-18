@@ -94,8 +94,7 @@ class App extends Component {
             <Route exact path='/' component={LaundryContainer} />
             <Route exact path='/study-rooms' component={Study} />
             <Route exact path='/printer' component={Printer} />
-            {/* <Route component={NotFound} /> */}
-            <Route path='*' component={NotFound} />
+            <Route component={NotFound} />
           </Switch>
         </Section>
 
