@@ -55,7 +55,7 @@ class App extends Component {
   render() {
     const { showToast, toastData: { text, status } } = this.props
     return (
-      <GrommetApp centered={false} lang='hu-HU'>
+      <GrommetApp className='app' centered={false} lang='hu-HU'>
         <Header
           size='small'
           float={false}
