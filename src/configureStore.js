@@ -1,17 +1,19 @@
 import { createStore, applyMiddleware } from 'redux'
 import thunkMiddleware from 'redux-thunk'
-import { createLogger } from 'redux-logger'
 import rootReducer from './reducers'
 
-const loggerMiddleware = createLogger()
+const middlewares = []
+middlewares.push(thunkMiddleware)
+
+if (process.env.NODE_ENV === 'development') {
+  const { logger } = require('redux-logger')
+  middlewares.push(logger)
+}
 
 export default function configureStore(preloadedState) {
   return createStore(
     rootReducer,
     preloadedState,
-    applyMiddleware(
-      thunkMiddleware,
-      loggerMiddleware,
-    ),
+    applyMiddleware(...middlewares),
   )
 }
