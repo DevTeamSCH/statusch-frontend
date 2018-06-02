@@ -118,7 +118,7 @@ class App extends Component {
           full='horizontal'
         >
           <Box direction='row' responsive={false} justify='center' flex='grow'>
-            Created by DevTeam
+            Created by&nbsp;<a href="https://github.com/DevTeamSCH/">DevTeam</a>&nbsp;&amp;&nbsp;<a href="https://sem.sch.bme.hu">SEM</a>
             <Anchor
               className='social-icon'
               icon={<SocialGithubIcon />}
