@@ -15,7 +15,7 @@ import Status from 'grommet/components/icons/Status'
 import SocialGithubIcon from 'grommet/components/icons/base/SocialGithub'
 
 import { getLaundry, hideToast, loadSave } from '../actions'
-import { Printer, Study, NotFound } from '../components'
+import { Printer, /* Study,*/ NotFound } from '../components'
 import LaundryContainer from './LaundryContainer'
 
 
@@ -82,7 +82,7 @@ class App extends Component {
                 direction='row'
               >
                 <Anchor className='menu-anchor' path='/'>MosógépSCH</Anchor>
-                <Anchor className='menu-anchor' path='/study-rooms'>TanulóSCH</Anchor>
+                {/* <Anchor className='menu-anchor' path='/study-rooms'>TanulóSCH</Anchor> */}
                 <Anchor className='menu-anchor' path='/printer'>PrinterSCH</Anchor>
               </Menu>
             </Box>
@@ -92,7 +92,7 @@ class App extends Component {
         <Section>
           <Switch>
             <Route exact path='/' component={LaundryContainer} />
-            <Route exact path='/study-rooms' component={Study} />
+            {/* <Route exact path='/study-rooms' component={Study} /> */}
             <Route exact path='/printer' component={Printer} />
             <Route component={NotFound} />
           </Switch>
@@ -110,6 +110,7 @@ class App extends Component {
           </Toast>
         }
 
+        <div id="spacer"></div>
         <Footer
           colorIndex='grey-5-a'
           className='footer'
